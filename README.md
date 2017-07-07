@@ -1,1 +1,6 @@
-# SklearnModel
+end_info = Label(root, text='date end:', width=lable_width)
+end_info.grid(row=1, column=0)
+end_var = StringVar()
+end_var.set('2017.07.03')
+end_Entry = Entry(root, width=entry_width, textvariable=end_var)
+end_Entry.grid(row=1, column=1)
