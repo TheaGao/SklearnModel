@@ -1,7 +1,9 @@
 import os
+
 import h5py
 from baseZhang import wavread, calcMFCC, if_no_create_it
 from pydub import AudioSegment
+
 
 # data_dir = '../Data/'
 # lab_dir = data_dir + 'lab/'
@@ -16,6 +18,7 @@ def trans_audio_2_wav(audio_path):
     song.export(out_path, 'wav')
     return 0
 
+
 def batach_2_wav(dataset_dir):
     for root, dirs, filenames in os.walk(dataset_dir):
         for audioFile in filenames:
@@ -25,10 +28,13 @@ def batach_2_wav(dataset_dir):
                 print audio_path
     return 0
 
+
 # # batach_2_wav(data_dir)
 #
 # wav_dataset_dir = data_dir + 'wav/'
 # lab_dir = data_dir + 'wav/lab/'
+
+
 
 def extract_feat_from_wav(wav_path):
     if '/train/' in wav_path:
@@ -76,6 +82,21 @@ def batach_2_feat(dataset_dir):
     return datasetX, datasetY
 
 
+# trainX, trainY = batach_2_feat(wav_dataset_dir + 'train')
+# testX, testY = batach_2_feat(wav_dataset_dir + 'test')
+# validX, validY = batach_2_feat(wav_dataset_dir + 'valid')
+#
+# file = h5py.File('dataset.h5', 'w')
+# file.create_dataset('trainX', data=trainX)
+# file.create_dataset('trainY', data=trainY)
+# file.create_dataset('testX', data=testX)
+# file.create_dataset('testY', data=testY)
+# file.create_dataset('validX', data=validX)
+# file.create_dataset('validY', data=validY)
+# file.close()
+
+
+
 def getDataXY(h5_path='../SklearnModel_data/dataset.h5'):
     file = h5py.File(h5_path, 'r')
     trainX = file['trainX'][:]
@@ -87,6 +108,7 @@ def getDataXY(h5_path='../SklearnModel_data/dataset.h5'):
 
     file.close()
     return trainX, trainY, testX, testY, validX, validY
+
 
 def get_accuracy(predict, true):
     right_num = 0

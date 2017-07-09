@@ -3,6 +3,8 @@ from preprocessData import getDataXY, get_accuracy
 
 trainX, trainY, testX, testY, validX, validY = getDataXY()
 
+print type(trainY)
+
 models = ['Models/dt0.58.pkl', 'Models/NB0.59.pkl', 'Models/NC0.57.pkl',
           'Models/NNP0.61.pkl', 'Models/sgd0.54.pkl']
 

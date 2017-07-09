@@ -5,7 +5,6 @@ from voteModels import voteIt
 predict_song_label = []
 true_song_label = []
 
-
 def batch_singing_voice_detection(dataset_dir='../Data/wav/test/'):
     for root, dirs, filenames in os.walk(dataset_dir):
         for audioFile in filenames:

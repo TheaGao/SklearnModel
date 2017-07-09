@@ -3,8 +3,8 @@ import os
 from baseZhang import wavread, calcMFCC
 from sklearn.externals import joblib
 
-from voteModels import voteIt
 from preprocessData import get_accuracy
+from voteModels import voteIt
 
 
 def singing_voice_detection(audio_path):
@@ -35,7 +35,8 @@ def singing_voice_detection(audio_path):
         mfcc = calcMFCC(audio_part_data, fs)
         for item_mfcc in mfcc:
             segment_mfcc.append(item_mfcc)
-        models = ['dt0.58.pkl', 'gnb0.59.pkl', 'mlp0.60.pkl', 'nc0.57.pkl', 'sgd0.57.pkl']
+        models = ['Models/dt0.58.pkl', 'Models/NB0.59.pkl', 'Models/NC0.57.pkl',
+                  'Models/NNP0.61.pkl', 'Models/sgd0.54.pkl']
         all_pre = []
         for model in models:
             # print model
@@ -50,11 +51,11 @@ def singing_voice_detection(audio_path):
         predict_song_label.append(segmentLabel)
     return predict_song_label, true_song_label
 
+print singing_voice_detection('../Data/wav/train/01 - 10min.wav')
 
-print singing_voice_detection('../data/pyT6/wav/train/01 - 10min.wav')
 
 
-def batch_svd(dataset_dir='../data/pyT6/wav/test/'):
+def batch_svd(dataset_dir='../Data/wav/test/'):
     all_pre_seg = []
     all_tru_seg = []
     for root, dirs, filenames in os.walk(dataset_dir):
