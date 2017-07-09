@@ -1,5 +1,4 @@
 import os
-
 import numpy as np
 from baseZhang import class_encoder_to_number
 from sklearn.externals import joblib

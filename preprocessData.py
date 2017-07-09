@@ -76,19 +76,6 @@ def batach_2_feat(dataset_dir):
     return datasetX, datasetY
 
 
-# trainX, trainY = batach_2_feat(wav_dataset_dir + 'train')
-# testX, testY = batach_2_feat(wav_dataset_dir + 'test')
-# validX, validY = batach_2_feat(wav_dataset_dir + 'valid')
-#
-# file = h5py.File('dataset.h5', 'w')
-# file.create_dataset('trainX', data=trainX)
-# file.create_dataset('trainY', data=trainY)
-# file.create_dataset('testX', data=testX)
-# file.create_dataset('testY', data=testY)
-# file.create_dataset('validX', data=validX)
-# file.create_dataset('validY', data=validY)
-# file.close()
-
 def getDataXY(h5_path='../SklearnModel_data/dataset.h5'):
     file = h5py.File(h5_path, 'r')
     trainX = file['trainX'][:]
@@ -100,3 +87,12 @@ def getDataXY(h5_path='../SklearnModel_data/dataset.h5'):
 
     file.close()
     return trainX, trainY, testX, testY, validX, validY
+
+def get_accuracy(predict, true):
+    right_num = 0
+    total_num = 0
+    for pre, tru in zip(predict, true):
+        total_num += 1
+        if pre == tru:
+            right_num += 1
+    return right_num / 0.1 / total_num
