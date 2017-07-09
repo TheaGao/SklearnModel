@@ -89,7 +89,7 @@ def batach_2_feat(dataset_dir):
 # file.create_dataset('validY', data=validY)
 # file.close()
 
-def getDataXY(h5_path='dataset.h5'):
+def getDataXY(h5_path='../SklearnModel_data/dataset.h5'):
     file = h5py.File(h5_path, 'r')
     trainX = file['trainX'][:]
     trainY = file['trainY'][:]
